@@ -11,10 +11,12 @@ db.test.find({"skills.name" : "JAVASCRIPT","skills.level":"Intermidiate"}).proje
 db.test.find({ skills: {$elemMatch: {name: 'JAVASCRIPT',"level":"Intermidiate"}}}).project({skills: 1})
 
 
-// *** $set(WHole field update) Operator ***
+// *** $set(Whole field update) Operator ***
 db.test.updateOne({"_id" : ObjectId("6406ad64fc13ae5a4000008a")} , {$set:{age: 80}})
 db.test.updateOne({"_id" : ObjectId("6406ad64fc13ae5a4000008a")} , {$set:{age: 80}})
 db.test.updateOne({"_id" : ObjectId("6406ad64fc13ae5a4000008a")} , {$set:{interests: ["Gaming","Reading","Cooking"]}})
+db.test.updateOne({"_id" : ObjectId("6406ad64fc13ae5a4000008a")},{$set:{"address.city" : "Dhaka","address.country" : "Bangladesh"}})
+db.test.updateOne({"_id" : ObjectId("6406ad64fc13ae5a4000008a"),"education.major":"Nursing"} , {$set:{"education.$.major": "CSE"}})
 
 
 // *** $addToSet(just one value modified) Operator ***
